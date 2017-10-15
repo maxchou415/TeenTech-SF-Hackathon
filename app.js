@@ -6,6 +6,7 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')()
 const logger = require('koa-logger')
 const mongoose = require('mongoose')
+const cors = require('koa2-cors')
 
 const apis = require('./routes/apis')
 
@@ -19,6 +20,7 @@ onerror(app)
 app.use(bodyparser)
 app.use(json())
 app.use(logger())
+app.use(cors())
 app.use(require('koa-static')(__dirname + '/public'))
 
 app.use(views(__dirname + '/views', {
